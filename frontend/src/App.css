@@ -1,38 +1,212 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+:root {
+  --etana-brown: #8B4513;
+  --etana-orange: #FF8C00;
+  --etana-light-brown: #D2691E;
+}
+
 .App {
-    text-align: center;
+  text-align: center;
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* Custom Etana Colors */
+.text-etana-brown {
+  color: var(--etana-brown);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+.text-etana-orange {
+  color: var(--etana-orange);
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+.bg-etana-brown {
+  background-color: var(--etana-brown);
 }
 
-.App-link {
-    color: #61dafb;
+.bg-etana-orange {
+  background-color: var(--etana-orange);
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.border-etana-brown {
+  border-color: var(--etana-brown);
+}
+
+.border-etana-orange {
+  border-color: var(--etana-orange);
+}
+
+.hover\:text-etana-brown:hover {
+  color: var(--etana-brown);
+}
+
+.hover\:text-etana-orange:hover {
+  color: var(--etana-orange);
+}
+
+.hover\:bg-etana-brown:hover {
+  background-color: var(--etana-brown);
+}
+
+.hover\:bg-etana-orange:hover {
+  background-color: var(--etana-orange);
+}
+
+.focus\:ring-etana-orange:focus {
+  --tw-ring-color: var(--etana-orange);
+}
+
+.focus\:ring-etana-brown:focus {
+  --tw-ring-color: var(--etana-brown);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Hero section gradient overlay */
+.hero-gradient {
+  background: linear-gradient(135deg, var(--etana-brown) 0%, var(--etana-orange) 100%);
+}
+
+/* Service cards hover effect */
+.service-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Portfolio hover effects */
+.portfolio-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--etana-brown) 0%, var(--etana-orange) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.portfolio-item:hover::before {
+  opacity: 0.9;
+}
+
+.portfolio-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.portfolio-item:hover .portfolio-content {
+  opacity: 1;
+}
+
+/* Contact form styling */
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+  border-color: var(--etana-orange);
+  box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.1);
+}
+
+/* Mobile menu toggle */
+@media (max-width: 768px) {
+  .mobile-menu {
+    display: none;
+  }
+  
+  .mobile-menu.active {
+    display: block;
+  }
+}
+
+/* Responsive typography */
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.125rem;
+  }
+  
+  .section-title {
+    font-size: 1.875rem;
+  }
+}
+
+/* Loading states */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Success/Error messages */
+.message-success {
+  background-color: #10B981;
+  color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+}
+
+.message-error {
+  background-color: #EF4444;
+  color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--etana-orange);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--etana-brown);
 }
